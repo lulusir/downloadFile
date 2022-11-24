@@ -1,11 +1,11 @@
 {
-  "name": "downloasbytes",
+  "name": "downloadfile",
   "version": "1.0.0",
-  "description": "前端下载base64文件",
+  "description": "前端后端下载文件示例项目",
   "main": "index.js",
   "scripts": {
     "start": "node ./src/index.js"
   },
-  "author": "",
+  "author": "lujs",
   "license": "ISC"
 }
