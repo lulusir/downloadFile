@@ -23,6 +23,7 @@ http
       response.writeHead(200, {
         "Content-Disposition": "attachment; filename=a.gif",
         "Content-Type": "image/gif; ",
+        "Access-Control-Allow-Origin": "*"
       });
       response.end(gif);
     } else {

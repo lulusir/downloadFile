@@ -9,12 +9,21 @@
 </head>
 <script>
   function downloadBase64() {
-    console.log(1)
     fetch('http://localhost:2345/base64').then(r => r.json()).then(({ base64 }) => {
       const data = new Uint8Array(atob(base64).split('').map((v) => v.charCodeAt()))
       const aLink = document.createElement('a')
       aLink.setAttribute('download', 'a.gif')
       aLink.href = URL.createObjectURL(new Blob([data]))
+      aLink.click()
+    })
+
+
+  }
+  function downloadFile() {
+    fetch('http://localhost:2345/download').then(r => r.blob()).then((res) => {
+      const aLink = document.createElement('a')
+      aLink.setAttribute('download', 'a.gif')
+      aLink.href = URL.createObjectURL(res)
       aLink.click()
     })
   }
@@ -23,7 +32,7 @@
 <body>
   <a href="http://localhost:2345/download">download by back end</a>
   <button onclick="downloadBase64()">download by front end</button>
-
+  <button onclick="downloadFile()">download by back end 2</button>
 </body>
 
 </html>
