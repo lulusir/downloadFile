@@ -20,9 +20,15 @@
 
   }
   function downloadFile() {
-    fetch('http://localhost:2345/download').then(r => r.blob()).then((res) => {
+    fetch('http://localhost:2345/download').then(async r => {
+      const res = await r.blob()
+      return {
+        res: res,
+        fileName: r.headers.get('file-name')
+      }
+    }).then(({ res, fileName }) => {
       const aLink = document.createElement('a')
-      aLink.setAttribute('download', 'a.gif')
+      aLink.setAttribute('download', fileName)
       aLink.href = URL.createObjectURL(res)
       aLink.click()
     })

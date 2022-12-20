@@ -23,7 +23,9 @@ http
       response.writeHead(200, {
         "Content-Disposition": "attachment; filename=a.gif",
         "Content-Type": "image/gif; ",
-        "Access-Control-Allow-Origin": "*"
+        "Access-Control-Allow-Origin": "*",
+        "file-name": "test.gif",
+        "Access-Control-Expose-Headers": "file-name",
       });
       response.end(gif);
     } else {
